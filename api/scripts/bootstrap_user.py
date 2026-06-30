@@ -1,5 +1,9 @@
 import os
 import sys
+from pathlib import Path
+
+# 允许在 api/ 目录或容器内直接执行 python scripts/bootstrap_user.py。
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from app.db.session import SessionLocal
 from app.models import UserRole

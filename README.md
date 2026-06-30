@@ -145,11 +145,7 @@ curl http://127.0.0.1:8000/health
 首次启动后创建登录账号：
 
 ```bash
-docker compose exec \
-  -e BOOTSTRAP_EMAIL=owner@example.com \
-  -e BOOTSTRAP_PASSWORD='ChangeMe123!' \
-  -e BOOTSTRAP_DISPLAY_NAME='Owner' \
-  api python scripts/bootstrap_user.py
+docker compose exec -e BOOTSTRAP_EMAIL=owner@example.com -e BOOTSTRAP_PASSWORD='ChangeMe123!' -e BOOTSTRAP_DISPLAY_NAME='Owner' api python scripts/bootstrap_user.py
 ```
 
 打开 <http://localhost:3000>，使用上面的邮箱和密码登录。登录后点击 **生成演示数据**，即可体验店铺、商品、SKU、诊断、素材、投放和复盘链路。
@@ -163,6 +159,10 @@ docker compose exec \
 ```bash
 cd api
 uv venv
+# macOS / Linux
+source .venv/bin/activate
+# Windows PowerShell
+# .\.venv\Scripts\Activate.ps1
 uv pip install -r requirements.txt
 cp .env.example .env
 # 按本机环境修改 DATABASE_URL、REDIS_URL、AGENT_CHECKPOINT_* 和模型配置
@@ -213,6 +213,10 @@ VIDEO_MODEL=wan2.6-t2v
 ```bash
 cd api
 uv venv
+# macOS / Linux
+source .venv/bin/activate
+# Windows PowerShell
+# .\.venv\Scripts\Activate.ps1
 uv pip install -r requirements.txt
 python -m pytest -q
 # 117 passed
